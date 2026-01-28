@@ -13,14 +13,15 @@
   <h1>PWA Install Test</h1>
   <p>Spoof, it works.</p>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(() => console.log('[OK] Service Worker registered'))
-          .catch(err => console.error('[ERR] SW failed', err));
-      });
-    }
-  </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js', { scope: './' })
+        .then(reg => console.log('[OK] SW scope:', reg.scope))
+        .catch(err => console.error('[ERR] SW failed:', err));
+    });
+  }
+</script>
+
 </body>
 </html>
