@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PWA Install Check</title>
+
+  <!-- Required -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+  <h1>PWA Install Test</h1>
+  <p>Spoof, it works.</p>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(() => console.log('[OK] Service Worker registered'))
+          .catch(err => console.error('[ERR] SW failed', err));
+      });
+    }
+  </script>
+</body>
+</html>
